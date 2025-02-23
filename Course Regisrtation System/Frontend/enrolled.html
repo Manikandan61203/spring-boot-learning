@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
+    </head>
+    <body>
+        <h2>Enrolled Students</h2>
+        <table align="center" border="1">
+            <tr align="center">
+                <th>Name</th>
+                <th>Email Id</th>
+                <th>Course Name</th>
+            </tr>
+            <tbody align="center" id="enrolltable"></tbody>
+        </table>
+        <script type="text/javascript">
+            window.onload=function(){
+                enrolledCourse();
+            }
+            function enrolledCourse() {
+                fetch("http://localhost:8080/courses/enrolled")
+                .then((response)=>response.json())
+                .then((data)=>{
+                    const datatable=document.getElementById("enrolltable")
+                    data.forEach(enroll => {
+                        var row=`<tr>
+                            <td>${enroll.name}</td>
+                            <td>${enroll.emailId}</td>
+                            <td>${enroll.courseName}</td>
+                            </tr>`
+                            datatable.innerHTML+=row;
+                    });
+                });
+            } 
+            </script>
+    </body>
+</html>
