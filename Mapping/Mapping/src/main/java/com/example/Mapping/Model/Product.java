@@ -33,7 +33,7 @@ public class Product {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
+//summaa
     public int getpId() {
         return pId;
     }
