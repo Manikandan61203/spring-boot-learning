@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h2>Spring Boot</h2>
+    <p >hello</p>
+    <div id="p">
+
+    </div>
+    <button onclick="getStudents()">Show Students</button>
+    <a href="register.html">Register!</a>
+    
+    <script>
+        // function getStudents(){
+        //     fetch("http://localhost:8080/students") //API ENDPOINT
+        //     .then((response)=>response.json()) //JSON CONVERSION
+        //     .then((data)=> console.log(data));
+        // }
+    async function getStudents() 
+    {
+        try {
+            // let a = 10;
+            // a = 12;
+            // const b = 10;
+            // console.log(a,b);
+            const response = await fetch("http://localhost:8080/students"); // API CALL
+            const data = await response.json(); // JSON CONVERSION
+            // let content_add = document.getElementById("p");
+            // data.map(item => {
+            //      let p1 = 
+            // })
+            
+            
+            
+            console.log(data)  // LOGGING THE DATA
+        } catch (error) {
+            console.error("Error fetching students:", error);
+        }
+    }
+    
+
+
+    </script>
+</body>
+</html>

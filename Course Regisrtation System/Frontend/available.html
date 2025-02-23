@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body>
+    <h2>Available Courses</h2>
+    <table align="center" border="1">
+        <tr align="center">
+            <th>Course Id</th>
+            <th>Course Name</th>
+            <th>Trainer</th>
+            <th>Durations in Weeks</th>
+        </tr>
+        <tbody align="center" id="coursetable"></tbody>
+    </table>
+    <script type="text/javascript">
+        window.onload = function () {
+            showCourse();
+        }
+        async function showCourse() {
+            await fetch("http://localhost:8080/courses")
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    const datatable = document.getElementById("coursetable")
+                    data.forEach(course => {
+                        var row = `<tr>
+                            <td>${course.courseId}</td>
+                            <td>${course.courseName}</td>
+                            <td>${course.trainer}</td>
+                            <td>${course.durationInWeeks}</td>
+                            </tr>`
+                        datatable.innerHTML += row;
+                    });
+                });
+        } 
+    </script>
+</body>
+
+</html>
